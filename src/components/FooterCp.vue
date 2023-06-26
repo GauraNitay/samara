@@ -37,7 +37,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 $mainC: #2c3e50;
 $activeC: #fa860f;
@@ -45,19 +45,17 @@ $whiteC: #fffefc;
 
 .footer {
   margin-top: 30px;
-  //border-top: 2px solid $mainC;
   padding-top: 20px;
   background-color: $mainC;
-  //box-shadow: inset 0 2px 10px 0 #7a7a7a;
+  a {
+    color: $whiteC;
+  }
 }
-a {
-  color: $whiteC;
-}
+
 
 .footer__inner {
   height: 100%;
   .footer__info {
-    //border: 2px solid black;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -66,7 +64,6 @@ a {
         margin-bottom: 10px;
         padding-left: 50px;
         color: $whiteC;
-        //border: 2px solid black;
       }
       .footer__address:before {
         position: absolute;
@@ -127,44 +124,45 @@ a {
       padding-left: 40px;
       line-height: 40px;
     }
-    .vkontakte:before {
-      position: absolute;
-      font-family: "icomoon";
-      content: "\f189";
-      font-size: 25px;
-      line-height: 40px;
-      top: 0;
-      left: 0;
-      color: $activeC;
-    }
-    .vkontakte {
-      position: relative;
-    }
-    .youtube:before {
-      position: absolute;
-      font-family: "icomoon";
-      content: "\f16a";
-      font-size: 25px;
-      line-height: 40px;
-      left: 0;
-      color: $activeC;
-    }
-    .youtube {
-      position: relative;
-    }
-    .telegram:before {
-      position: absolute;
-      font-family: "icomoon";
-      content: "\f2c6";
-      font-size: 25px;
-      line-height: 40px;
-      left: 0;
-      color: $activeC;
-    }
-    .telegram {
-      position: relative;
-    }
   }
+}
+
+.vkontakte:before {
+  position: absolute;
+  font-family: "icomoon";
+  content: "\f189";
+  font-size: 25px;
+  line-height: 35px;
+  top: 0;
+  left: 0;
+  color: $activeC;
+}
+.vkontakte {
+  position: relative;
+}
+.youtube:before {
+  position: absolute;
+  font-family: "icomoon";
+  content: "\f16a";
+  font-size: 25px;
+  line-height: 40px;
+  left: 0;
+  color: $activeC;
+}
+.youtube {
+  position: relative;
+}
+.telegram:before {
+  position: absolute;
+  font-family: "icomoon";
+  content: "\f2c6";
+  font-size: 25px;
+  line-height: 40px;
+  left: 0;
+  color: $activeC;
+}
+.telegram {
+  position: relative;
 }
 
 .footer__copyright {
@@ -175,7 +173,6 @@ a {
   p {
     color: #b0d3f8;
   }
-  //background-color: #e0ebf6;
 }
 
 </style>

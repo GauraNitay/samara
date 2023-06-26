@@ -1,35 +1,39 @@
 <template>
   <div class="news">
     <div class="news__inner">
-      <h1>Посты группы "Самарский центр ИСККОН"</h1>
+      <h1 class="news__title">Посты группы "Самарский центр ИСККОН"</h1>
       <h2 v-if="!load_posts">Загрузка постов...</h2>
-      <ul v-else class="posts__container">
-        <li class="post" v-for="(post, index) in posts" :key="post.id">
-          <pre v-if="post.text" class="post__text">{{ post.text }}</pre>
-          <div v-if="post.attachments && post.attachments.length > 0">
-            <img class="post__image" v-for="attachment in post.attachments" :key="attachment.photo.id" :src="attachment.photo.sizes[3].url" alt="Фото">
-          </div>
-          <div v-if="post.copy_history && post.copy_history.length > 0">
-            <div v-for="forwardedPost in post.copy_history" :key="forwardedPost.id">
-              <h3>Пересланная запись</h3>
-              <pre class="post__text">{{ forwardedPost.text }}</pre>
-              <div v-if="forwardedPost.attachments && forwardedPost.attachments.length > 0">
-                <div class="post__forwarded" v-for="attachment in forwardedPost.attachments">
-                  <img class="post__image" v-if="attachment.photo" :src="attachment.photo.sizes[3].url" alt="Фото">
-                  <div class="post__video" v-if="attachment.video" :key="attachment.video.id">
-                    <a class="video__link" :href="getVideoUrl(attachment.video)">
-                      <img class="post__image" :src="attachment.video.image[3].url" alt="Видео">
-                    </a>
+      <div v-else class="posts__container">
+        <ul>
+          <li class="post" v-for="(post, index) in posts" :key="post.id">
+            <pre v-if="post.text" class="post__text">{{ post.text }}</pre>
+            <div v-if="post.attachments && post.attachments.length > 0">
+              <img class="post__image" v-for="attachment in post.attachments" :key="attachment.photo.id" :src="attachment.photo.sizes[3].url" alt="Фото">
+            </div>
+            <div class="post__forwarded" v-if="post.copy_history && post.copy_history.length > 0">
+              <div v-for="forwardedPost in post.copy_history" :key="forwardedPost.id">
+                <h3>Пересланная запись</h3>
+                <pre v-if="forwardedPost.text" class="post__text">{{ forwardedPost.text }}</pre>
+                <div v-if="forwardedPost.attachments && forwardedPost.attachments.length > 0">
+                  <div class="post__forwarded_attachments" v-for="attachment in forwardedPost.attachments">
+                    <img class="post__image" v-if="attachment.photo" :src="attachment.photo.sizes[3].url" alt="Фото">
+                    <div class="post__video" v-if="attachment.video" :key="attachment.video.id">
+                      <a class="video__link" :href="getVideoUrl(attachment.video)">
+                        <img class="post__image" :src="attachment.video.image[3].url" alt="Видео">
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <p class="post__date">{{ formatDate(post.date) }}</p>
-        </li>
-      </ul>
-      остальные посты вы можете посмотреть в сообществе Вконтаке:
-      ссылка
+            <p class="post__date">{{ formatDate(post.date) }}</p>
+          </li>
+        </ul>
+        <p class="rest_posts">
+          Остальные посты вы можете посмотреть в сообществе Вконтаке:
+        </p>
+        <a class="vkontakte" href="https://vk.com/samarskiy_centr_iskcon">Самарский Центр Общества Сознания Кришны</a>
+      </div>
     </div>
   </div>
 </template>
@@ -60,7 +64,6 @@ export default {
       try {
         const response = await jsonp(url);
         this.posts = response.response.items;
-        this.videos = new Array(this.posts.length).fill([])
       } catch (error) {
         console.error(error);
       } finally {
@@ -105,7 +108,8 @@ export default {
   text-align: center;
 }
 
-.posts__container {
+.news__title {
+  margin-bottom: 30px;
 }
 
 .post {
@@ -121,22 +125,24 @@ export default {
   }
 }
 
-.post__forwarded {
-  margin-bottom: 20px;
+.post__forwarded_attachments {
   border-radius: 4px;
+  max-width: 700px;
+  max-height: 500px;
+  margin: 0 auto 20px;
+  line-height: 0;
 }
-.post__forwarded:last-child {
+.post__forwarded_attachments:last-child {
   margin-bottom: 0;
 }
 
 .post__image {
   max-height: 500px;
+  max-width: 700px;
   border-radius: 4px;
 }
 
 .post__video {
-  max-width: 700px;
-  //margin: 0 auto;
   background-color: rgba(0, 0, 0, 0.80);
   line-height: 0;
   border-radius: 4px;
@@ -146,7 +152,7 @@ export default {
   position: absolute;
   font-family: "icomoon";
   content: "\f04b";
-  font-size: 80px;
+  font-size: 60px;
   color: rgba(255, 254, 252, 0.7);
   left: 0;
   right: 0;
@@ -162,16 +168,37 @@ export default {
   font-size: 15px;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: left;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #2c3e50;
+  border-radius: 4px;
+  box-shadow: inset 0 0 6px rgba(122, 122, 122, 0.4);;
   white-space: pre-wrap;       /* Since CSS 2.1 */
   white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
   white-space: -pre-wrap;      /* Opera 4-6 */
   white-space: -o-pre-wrap;    /* Opera 7 */
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
-  margin-bottom: 20px;
 }
 
 .post__date {
   margin-top: 20px;
+}
+
+.rest_posts {
+  margin-top: 30px;
+}
+.vkontakte:before {
+  line-height: 17px;
+  color: #0a4db0;
+}
+.vkontakte {
+  padding-left: 35px;
+  line-height: 30px;
+  &:hover {
+    &:before {
+      color: #4385e7;
+    }
+  }
 }
 
 </style>

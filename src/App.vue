@@ -18,6 +18,9 @@ export default {
 
 <style lang="scss">
 
+$mainC: #2c3e50;
+$activeC: #fa860f;
+
 @font-face {
   font-family: 'icomoon';
   src:  url('@/fonts/icomoon.eot?bc57xb');
@@ -67,8 +70,6 @@ export default {
   content: "\f04b";
 }
 
-$mainC: #2c3e50;
-$activeC: #fa860f;
 
 * {
   margin: 0;

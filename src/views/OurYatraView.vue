@@ -1,8 +1,11 @@
 <template>
-  <div class="wrapper">
-    <h2>Изображения наших божеств</h2>
-    <div class="images__vk" v-for="photo in photos" :key="photo.id">
-      <img :src="photo.sizes[8].url" :alt="photo.title" />
+  <div class="yatra">
+    <h1 v-if="!loadData">Загрузка информации...</h1>
+    <div v-else class="yatra__inner">
+      <h2 class="yatra__title">Изображения наших божеств</h2>
+      <div class="images__vk">
+        <img class="yatra__image" v-for="photo in photos" :key="photo.id" :src="photo.sizes[8].url" :alt="photo.title" />
+      </div>
     </div>
   </div>
 </template>
@@ -16,6 +19,7 @@ export default {
   name: "OurYatraView",
   data() {
     return {
+      loadData: false,
       photos: [],
     };
   },
@@ -42,18 +46,34 @@ export default {
       } catch (error) {
         console.error(error);
       }
+      finally {
+        this.loadData = true
+      }
     }
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
+.yatra {
+  min-height: 100vh;
   text-align: center;
 }
+
+.yatra__title {
+  margin-bottom: 30px;
+}
+
 .images__vk {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   img {
-    width: 500px;
+    width: 400px;
+    border-radius: 4px;
+    margin: 0 40px 40px;
+    box-shadow: 0 0 20px rgba(45, 45, 45, 0.7);
   }
 }
 </style>

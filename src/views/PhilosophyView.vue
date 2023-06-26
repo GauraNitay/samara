@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="philosophy">
     Philosophy
   </div>
 </template>
@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .wrapper {
+  .philosophy {
     min-height: 100vh;
   }
 </style>
