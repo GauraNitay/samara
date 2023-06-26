@@ -63,6 +63,9 @@ export default {
 .icon-telegram:before {
   content: "\f2c6";
 }
+.icon-play:before {
+  content: "\f04b";
+}
 
 $mainC: #2c3e50;
 $activeC: #fa860f;
@@ -72,6 +75,7 @@ $activeC: #fa860f;
   padding: 0;
   box-sizing: border-box;
   color: $mainC;
+  list-style: none
 }
 a {
   text-decoration: none;

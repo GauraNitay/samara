@@ -52,6 +52,7 @@ export default {
   padding: 40px;
   box-shadow: 0 0 30px rgba(122, 122, 122, 0.3);
   border-radius: 4px;
+  background-color: #fffefc;
 }
 
 .inner {

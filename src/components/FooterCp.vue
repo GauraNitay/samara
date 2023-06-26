@@ -41,13 +41,17 @@ export default {
 
 $mainC: #2c3e50;
 $activeC: #fa860f;
+$whiteC: #fffefc;
 
 .footer {
   margin-top: 30px;
-  border-top: 2px solid $mainC;
+  //border-top: 2px solid $mainC;
   padding-top: 20px;
-  background-color: #fff7ee;
+  background-color: $mainC;
   //box-shadow: inset 0 2px 10px 0 #7a7a7a;
+}
+a {
+  color: $whiteC;
 }
 
 .footer__inner {
@@ -61,6 +65,7 @@ $activeC: #fa860f;
       p {
         margin-bottom: 10px;
         padding-left: 50px;
+        color: $whiteC;
         //border: 2px solid black;
       }
       .footer__address:before {
@@ -87,9 +92,6 @@ $activeC: #fa860f;
       }
       .footer__phone {
         position: relative;
-        a {
-          text-decoration: none;
-        }
       }
 
       .footer__transport:before {
@@ -116,6 +118,7 @@ $activeC: #fa860f;
 .footer__socials {
   p {
     padding-left: 0 !important;
+    color: $whiteC;
   }
   .socials__container {
     display: flex;
@@ -170,7 +173,7 @@ $activeC: #fa860f;
   text-align: center;
   font-size: 14px;
   p {
-    color: #5d81a6;
+    color: #b0d3f8;
   }
   //background-color: #e0ebf6;
 }

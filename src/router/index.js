@@ -4,6 +4,7 @@ import ContactsView from "@/views/ContactsView.vue"
 import PhilosophyView from "@/views/PhilosophyView.vue";
 import OurYatraView from "@/views/OurYatraView.vue";
 import NewsView from "@/views/NewsView.vue";
+import BooksView from "@/views/BooksView.vue";
 
 const routes = [
   {
@@ -12,14 +13,19 @@ const routes = [
     component: HomeView
   },
   {
+    path: '/news',
+    name: 'news',
+    component: NewsView
+  },
+  {
     path: '/philosophy',
     name: 'philosophy',
     component: PhilosophyView
   },
   {
-    path: '/news',
-    name: 'news',
-    component: NewsView
+    path: '/books',
+    name: 'books',
+    component: BooksView
   },
   {
     path: '/ouryatra',

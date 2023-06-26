@@ -13,6 +13,8 @@
         <img class="delim" src="@/assets/delimeter.png">
         <router-link to="/philosophy">Философия</router-link>
         <img class="delim" src="@/assets/delimeter.png">
+        <router-link to="/books">Книги</router-link>
+        <img class="delim" src="@/assets/delimeter.png">
         <router-link to="/ouryatra">Наша ятра</router-link>
         <img class="delim" src="@/assets/delimeter.png">
         <router-link to="/contacts">Контакты</router-link>

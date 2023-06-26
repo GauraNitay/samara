@@ -1,4 +1,8 @@
 const { defineConfig } = require('@vue/cli-service')
-module.exports = defineConfig({
-  transpileDependencies: true
-})
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
+module.exports = {
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/samara/'
+    : '/'
+};
